@@ -444,8 +444,11 @@ echo -n "$plugin_xml" > "$working_dir/plugin.xml"
 
 cd "$working_dir"
 
-if [ "${print_java_code:-}" == "true" ]; then 
+if [ "${print_java_code:-}" == "true" ]; then
+    echo -e "\e[32m[+]\e[0m Here is your generated Java code\n"
+    echo -e "\e[1;33m-----------------------------------------------------------------------------------------------------------\e[0m\n"
     echo "$java_code"
+    echo -e "\n\e[1;33m-----------------------------------------------------------------------------------------------------------\e[0m\n"
 fi
 javac --release "$java_version" "$class_name.java" > /dev/null 2>&1
 
