@@ -144,6 +144,18 @@ bash openfire_plugin_upload_curl.sh -username 'admin' -password 'admin' -target 
 bash openfire_plugin_upload_curl.sh -username 'admin' -password 'admin' -target http://127.0.0.1:9090 -custom_jar '/tmp/test.jar'
 "
 
+for arg in "$@"; do
+    if [ "$arg" == "-help" ];then
+        echo -e "$help"
+        exit 0
+    fi
+
+    if [ "$arg" == "-full_help" ];then
+        echo -e "$full_help"
+        exit 0
+    fi
+done
+
 if [ "$#" -lt 9 ];then
     echo -e "\n\e[31m[-]\e[0m Not enough parameters have been provided. Use -help for guidance."
     exit 1
