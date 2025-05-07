@@ -94,6 +94,13 @@ and executed by Runtime.getRuntime().exec(cmd)
 
 \e[1;33m-------------------------------------------------------------------------------------------------------------------------\e[0m
 
+\e[31m[!]\e[0m About \e[32m-debug -local_ip -local_port\e[0m:
+
+The best use case for this debug option is to add another proxy listener in Burp Suite's proxy settings,
+then set your proxy listener to intercept mode before executing this script in order to capture the stdout or stderr of your command.
+
+\e[1;33m-------------------------------------------------------------------------------------------------------------------------\e[0m
+
 \e[31m[!]\e[0m About \e[32m-custom_jar\e[0m:
 
 If you will provide jar file of your own
