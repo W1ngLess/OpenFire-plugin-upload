@@ -144,6 +144,11 @@ bash openfire_plugin_upload_curl.sh -username 'admin' -password 'admin' -target 
 bash openfire_plugin_upload_curl.sh -username 'admin' -password 'admin' -target http://127.0.0.1:9090 -custom_jar '/tmp/test.jar'
 "
 
+if [ "$#" -lt 9 ];then
+    echo -e "\n\e[31m[-]\e[0m Not enough parameters have been provided. Use -help for guidance."
+    exit 1
+fi
+
 while [[ "$#" -gt 0 ]]; do
   case "$1" in
     -windows)
@@ -632,9 +637,9 @@ echo -e "\nTrying to grab logs..."
 sleep 3
 curl "$target/log.jsp?log=all&mode=asc&lines=100" -H "Cookie: JSESSIONID=$j_sid" ${proxy:-} ${ssl:-} -s -o /tmp/log.html
 if [ -s "/tmp/log.html" ]; then
-    echo -e "\e[32m[+]\e[31m your /tmp/log.html file is ready please open the file in a broswer\n"
+    echo -e "\e[32m[+]\e[0m your /tmp/log.html file is ready please open the file in a broswer\n"
 else
-    echo -e "\e[31m[-]\e[31m failed to grab the logs"
+    echo -e "\e[31m[-]\e[0m failed to grab the logs"
 fi
 
 
