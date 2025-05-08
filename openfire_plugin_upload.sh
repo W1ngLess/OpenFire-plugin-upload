@@ -372,8 +372,8 @@ public class $class_name implements Plugin {
         URL url = new URL(\"http://${ip:-}\");
         HttpURLConnection conn = (HttpURLConnection) url.openConnection(proxy);
 
-	conn.setConnectTimeout(3000);  // 3 seconds → timeout for TCP connect
-        conn.setReadTimeout(3000);     // 3 seconds → timeout for reading response
+	// conn.setConnectTimeout(3000);  // 3 seconds → timeout for TCP connect
+        conn.setReadTimeout(300);     // 300 millisecond (0.3 seconds) → timeout for reading response
 
         conn.setRequestMethod(\"POST\");
         conn.setDoOutput(true);
