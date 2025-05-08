@@ -37,6 +37,9 @@ help="
 
 -custom_jar            Full path of the JAR file that provided by the user of this script.  Example /home/user/test.jar
 
+-timeout               seconds are set by default between the upload and deletion of the plugin to avoid interrupting its execution.
+                       However, you can set it to less than 3, or even to 0.
+
 -help                  Display this help message
 
 -full_help             Display this help message and additional explanation with usage examples
@@ -168,6 +171,8 @@ if [ "$#" -lt 9 ];then
     exit 1
 fi
 
+timeout=3
+
 while [[ "$#" -gt 0 ]]; do
   case "$1" in
     -windows)
@@ -242,6 +247,7 @@ while [[ "$#" -gt 0 ]]; do
     -target) target="$2"; shift ;;
     -ssl) ssl="-k" ;;
     -proxy) proxy="--proxy $2"; shift ;;
+    -timeout) timeout="$2"; shift ;;
     -java_version) java_version="-java_version $2"; shift ;;
     -custom_jar) custom_jar="true"; custom_jar_path="$2"; shift ;;
     *) echo "Unknown parameter: $1"; exit 1 ;;
@@ -594,7 +600,7 @@ function upload_jar() {
 	res=$(curl "$target/plugin-admin.jsp?uploadplugin&csrf=$csrf" ${proxy:-} -H "Cookie: JSESSIONID=$j_sid; csrf=$csrf" -F "uploadfile=@$jar_path;type=$m" ${ssl:-} -s -w '%header{Location}')
 	status=( ${res/"?"/ } )
 
-	sleep 3
+	sleep $timeout
 
 	if [ "${status[1]}" == "uploadsuccess=true" ]; then
 	    echo -e "\e[32m[+]\e[0m Plugin upload succeed"
