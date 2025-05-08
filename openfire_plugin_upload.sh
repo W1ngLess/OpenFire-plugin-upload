@@ -37,7 +37,7 @@ help="
 
 -custom_jar            Full path of the JAR file that provided by the user of this script.  Example /home/user/test.jar
 
--timeout               seconds are set by default between the upload and deletion of the plugin to avoid interrupting its execution.
+-timeout               3 seconds are set by default between the upload and deletion of the plugin to avoid interrupting its execution.
                        However, you can set it to less than 3, or even to 0.
 
 -help                  Display this help message
